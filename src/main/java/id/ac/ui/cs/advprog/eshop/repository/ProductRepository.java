@@ -30,12 +30,15 @@ public class ProductRepository {
     public Product edit(Product updatedProduct) {
         for (int i = 0; i < productData.size(); i++) {
             if (productData.get(i).getProductId().equals(updatedProduct.getProductId())) {
-                productData.set(i, updatedProduct);
-                return updatedProduct;
+                Product existingProduct = productData.get(i);
+                existingProduct.setProductName(updatedProduct.getProductName());
+                existingProduct.setProductQuantity(updatedProduct.getProductQuantity());
+                return existingProduct;
             }
         }
-         return null;
+        return null;
     }
+
 
     public Product delete(String id) {
         for (int i = 0; i < productData.size(); i++) {
@@ -45,5 +48,4 @@ public class ProductRepository {
         }
         return null;
     }
-
 }
