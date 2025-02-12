@@ -10,6 +10,7 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
+    
     @Override
     public Product create(Product product) {
         productRepository.create(product);
@@ -21,5 +22,14 @@ public class ProductServiceImpl implements ProductService {
         List<Product> allProduct = new ArrayList<>();
         productIterator.forEachRemaining(allProduct::add);
         return allProduct;
+    }
+    @Override
+    public Product edit(Product updatedProduct) {
+        return productRepository.editProduct(updatedProduct);
+    }
+
+    @Override
+    public Product findById(String id) {
+        return productRepository.findById(id);
     }
 }
