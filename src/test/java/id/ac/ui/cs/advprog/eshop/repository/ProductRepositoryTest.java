@@ -1,15 +1,21 @@
 package id.ac.ui.cs.advprog.eshop.repository;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import id.ac.ui.cs.advprog.eshop.model.Product;
 
+@ExtendWith(MockitoExtension.class)
 public class ProductRepositoryTest {
         @InjectMocks
     ProductRepository productRepository;
