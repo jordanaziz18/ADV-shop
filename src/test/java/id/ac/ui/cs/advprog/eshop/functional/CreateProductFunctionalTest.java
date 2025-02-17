@@ -25,7 +25,8 @@ class CreateProductFunctionalTest {
     @BeforeEach
     void setUp() {
         baseUrl = "http://localhost:" + serverPort;
-
+    }
+    
     @Test
     void testCreateProduct_Successful(ChromeDriver driver) throws Exception {
         // Test: Create a new product with valid name and quantity
@@ -88,5 +89,4 @@ class CreateProductFunctionalTest {
     }
 
     
-}
 }
