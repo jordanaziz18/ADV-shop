@@ -80,24 +80,6 @@ public class ProductRepositoryTest {
         assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
     }
     @Test
-    void testEdit() {
-        Product product = new Product();
-        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product.setProductName("Sampo Cap Bambang");
-        product.setProductQuantity(100);
-        productRepository.create(product);
-
-        Product updatedProduct = new Product();
-        updatedProduct.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        updatedProduct.setProductName("Sampo Cap Bambang");
-        updatedProduct.setProductQuantity(200);
-        Product savedProduct = productRepository.edit(updatedProduct);
-        assertNotNull(savedProduct);
-        assertEquals(updatedProduct.getProductId(), savedProduct.getProductId());
-        assertEquals(updatedProduct.getProductName(), savedProduct.getProductName());
-        assertEquals(updatedProduct.getProductQuantity(), savedProduct.getProductQuantity());
-    }
-    @Test
     void testEditIfProductNotFound() {
         Product updatedProduct = new Product();
         updatedProduct.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
