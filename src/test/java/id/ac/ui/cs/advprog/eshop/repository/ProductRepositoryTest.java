@@ -80,6 +80,26 @@ public class ProductRepositoryTest {
         assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
     }
     @Test
+    void testEditExistingProduct() {
+        // Test: Edit an existing product with new details
+        Product product = new Product();
+        product.setProductName("Shampoo for fragile hair: Lavander Scented");
+        product.setProductQuantity(100);
+        Product createdProduct = productRepository.create(product);
+        
+        Product updatedProduct = new Product();
+        updatedProduct.setProductId(createdProduct.getProductId());
+        updatedProduct.setProductName("13-in-one Shampoo: For Men");
+        updatedProduct.setProductQuantity(345);
+
+        // Expected: Product details should be updated successfully
+        Product result = productRepository.edit(updatedProduct);
+        assertNotNull(result);
+        assertEquals(updatedProduct.getProductName(), result.getProductName());
+        assertEquals(updatedProduct.getProductQuantity(), result.getProductQuantity());
+    }
+
+    @Test
     void testEditIfProductNotFound() {
         Product updatedProduct = new Product();
         updatedProduct.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
