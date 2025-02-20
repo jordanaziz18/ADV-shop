@@ -4,10 +4,12 @@ import id.ac.ui.cs.advprog.eshop.model.Product;
 import id.ac.ui.cs.advprog.eshop.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Arrays;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -15,13 +17,16 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(ProductController.class)
+@ExtendWith(MockitoExtension.class) // Enable Mockito
 class ProductControllerTest {
-    @Autowired
+
     private MockMvc mockMvc;
 
-    @MockBean
+    @Mock
     private ProductService productService;
+
+    @InjectMocks
+    private ProductController productController;
 
     private Product product;
 
@@ -31,6 +36,9 @@ class ProductControllerTest {
         product.setProductId("123");
         product.setProductName("Test Product");
         product.setProductQuantity(50);
+
+        // Manually initialize MockMvc with standaloneSetup
+        mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
     }
 
     @Test
