@@ -97,6 +97,7 @@ public class ProductRepositoryTest {
         assertNotNull(result);
         assertEquals(updatedProduct.getProductName(), result.getProductName());
         assertEquals(updatedProduct.getProductQuantity(), result.getProductQuantity());
+    
     }
 
     @Test
