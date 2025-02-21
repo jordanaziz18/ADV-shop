@@ -22,3 +22,14 @@ Adding a new suite for a similar task might lead to repeated setup and code. Thi
 1. **Code Duplication**: Extract shared setup into a base class or helper methods.  
 2. **Class Responsibilities**: Keep test classes focused. Break them down if they grow large.  
 3. **Naming and Organization**: Use descriptive names, group related tests, and maintain a consistent structure.
+
+
+## Week 2
+
+1. List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them.
+
+    - Things that i change based on the sonarcloud is imporving how some of the code are writen to increase the realiability and the maintainability of the project. This include grouping things based on what they do and also removing unnececary field injection and by using constructor injection insted.
+
+2. Look at your CI/CD workflows (GitHub)/pipelines (GitLab). Do you think the current implementation has met the definition of Continuous Integration and Continuous Deployment?
+
+    - Based on the things that i have implement in my project for the CI part where when each push happen the code is always tested to ensure that there is nothing wrong with the file and to be perfectly running. but i have not implement the CD part becasue for the web app i have chosen koyeb where once the github is connected it will automaticly depoly the newst version.
