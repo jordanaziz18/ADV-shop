@@ -38,11 +38,18 @@ public car findById(String carId){
 }
 
 public Car update(String Id, Car updatedCar){
-    for (int)
-
-
-
-
+    for (int =0; i< carData.size(); i++){
+        Car car = carData.get(i);
+        if(car.getCarId().equals(Id)){
+            car.setCarName(updatedCar.getCarName());
+            car.setCarColor(updatedCar.getCarColor());
+            car.setCarQuantity(updatedCar.getCarQuantity());
+            return car;
+        }
+    }
+    return null;
 }
+
+public void delete(string id) {carData.removeIf(car -> car.getCarId().equals(id));}
 
 }
