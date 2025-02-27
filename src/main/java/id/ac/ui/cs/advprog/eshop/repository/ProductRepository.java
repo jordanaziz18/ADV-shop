@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import id.ac.ui.cs.advprog.eshop.model.Product;
 @Repository
 public class ProductRepository {
-    private List<Product> productData = new ArrayList<>();
+    private final List<Product> productData = new ArrayList<>();
     
     public Product create(Product product) {
         product.setProductId("P" + (productData.size() + 1));
