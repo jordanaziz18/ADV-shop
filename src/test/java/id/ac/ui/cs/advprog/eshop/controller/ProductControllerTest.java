@@ -92,9 +92,9 @@ class ProductControllerTest {
 
     @Test
     void testDeleteProduct() throws Exception {
-        when(productService.delete("123")).thenReturn(product);
-
         mockMvc.perform(get("/product/delete/123"))
                 .andExpect(redirectedUrl("/product/list"));
+
+        verify(productService, times(1)).delete("123");
     }
 }

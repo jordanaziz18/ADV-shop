@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import id.ac.ui.cs.advprog.eshop.model.Car;
-import id.ac.ui.cs.advprog.eshop.service.CarService;
 import id.ac.ui.cs.advprog.eshop.service.CarServiceImpl;
 import id.ac.ui.cs.advprog.eshop.service.ProductService;
 
 
 @Controller
 @RequestMapping("/car")
-public class CarController {
+class CarController extends ProductController{
+    private final CarServiceImpl carService;
 
-    private final CarService carService;
-
-    public CarController(CarService carService) {
+    @Autowired
+    public CarController(ProductService productService, CarServiceImpl carService) {
+        super(productService);
         this.carService = carService;
     }
 

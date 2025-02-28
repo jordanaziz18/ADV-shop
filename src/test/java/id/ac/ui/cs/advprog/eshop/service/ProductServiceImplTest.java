@@ -78,10 +78,8 @@ class ProductServiceImplTest {
 
     @Test
     void testDelete() {
-        when(ProductRepository.delete("123")).thenReturn(product);
+        ProductService.delete("123");
 
-        Product deletedProduct = ProductService.delete("123");
-
-        assertEquals(product, deletedProduct);
+        verify(ProductRepository, times(1)).delete("123");
     }
 }
