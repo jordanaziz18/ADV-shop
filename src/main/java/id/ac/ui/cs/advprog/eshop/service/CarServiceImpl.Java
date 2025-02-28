@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import id.ac.ui.cs.advprog.eshop.model.Car;
-import id.ac.ui.cs.advprog.eshop.repository.CarRepository;
+import id.ac.ui.cs.advprog.eshop.repository.CarRepoInterface;
 
 @Service
 public class CarServiceImpl implements CarService {
     @Autowired
-    private CarRepository carRepository;
+    private CarRepoInterface carRepository;
+
     @Override
     public Car create(Car car) {
         carRepository.create(car);
@@ -35,7 +36,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void update(String carId, Car car) {
-        carRepository.update(carId, car);
+        carRepository.update(car);
     }
 
     @Override

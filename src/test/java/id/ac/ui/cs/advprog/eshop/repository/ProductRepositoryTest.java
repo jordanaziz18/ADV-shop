@@ -118,16 +118,13 @@ public class ProductRepositoryTest {
         product.setProductQuantity(100);
         productRepository.create(product);
 
-        Product deletedProduct = productRepository.delete(product.getProductId());
-        assertNotNull(deletedProduct);
-        assertEquals(product.getProductId(), deletedProduct.getProductId());
-        assertEquals(product.getProductName(), deletedProduct.getProductName());
-        assertEquals(product.getProductQuantity(), deletedProduct.getProductQuantity());
+        productRepository.delete(product.getProductId());
+        Iterator<Product> productIterator = productRepository.findAll();
+        assertFalse(productIterator.hasNext());
     }
     @Test
     void testDeleteIfProductNotFound() {
-        Product deletedProduct = productRepository.delete("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        assertNull(deletedProduct);
+        productRepository.delete("eb558e9f-1c39-460e-8860-71af6af63bd6");
     }
     
 }
