@@ -1,19 +1,21 @@
 package id.ac.ui.cs.advprog.eshop.service;
-import id.ac.ui.cs.advprog.eshop.model.Product;
-import id.ac.ui.cs.advprog.eshop.repository.ProductRepoInterface;
-import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
-import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import id.ac.ui.cs.advprog.eshop.model.Product;
+import id.ac.ui.cs.advprog.eshop.repository.ProductRepoInterface;
+import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
 
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    private ProductRepoInterface productRepository;
+    private  ProductRepoInterface productRepository;
     
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
