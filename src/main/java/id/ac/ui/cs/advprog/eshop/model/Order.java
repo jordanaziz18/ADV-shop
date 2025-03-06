@@ -1,7 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.model;
 import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 import java.util.List;
-import java.util.Arrays;
+
 
 import lombok.Builder;
 import lombok.Getter;
