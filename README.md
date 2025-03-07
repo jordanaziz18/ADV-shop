@@ -143,4 +143,11 @@ public class ProductManager {
     Its usfule in the ability of bug detectin. with TDD it help catches issues early with the consideration to cover both happt and edge cases. other then that is force us to consider the interface bfore we implemate it. 
 
 
-2. 
+2. You have created unit tests in Tutorial. Now reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.
+
+    - Fast: Separate slow functional tests from fast unit tests, which is already done with separate Gradle tasks.
+    - Independent: Reset the repository state in the @BeforeEach method to ensure each test starts with a clean state.
+    - Repeatable: Tests don't rely on external resources or specific environments.
+    - Self-validating: Tests use clear assertions with JUnit's assertion methods.
+    - Thorough: Coverage includes basic functionality and some edge cases.
+
