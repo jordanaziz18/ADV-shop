@@ -3,13 +3,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
+import id.ac.ui.cs.advprog.eshop.model.Payment;
 
 class PaymentTest {
-    private PaymentService paymentService;
-    private PaymentRepository paymentRepository;
     private Map<String, String> voucherData;
     private Map<String, String> codData;
-    
+
     @BeforeEach
     void setUp() {
         voucherData = new HashMap<>();
@@ -19,75 +18,60 @@ class PaymentTest {
         codData.put("address", "123 Main Street");
         codData.put("deliveryFee", "5000");
     }
-    
+
     @Test
-    void testAddPayment() {
-        Order order = new Order("ORDER123");
-        
-        Payment payment = paymentService.addPayment(order, "Voucher", voucherData);
-        
+    void testAddPaymentWithVoucher() {
+        Payment payment = new Payment(null, "Voucher", voucherData);
+
         assertNotNull(payment);
         assertEquals("Voucher", payment.getMethod());
         assertEquals("SUCCESS", payment.getStatus());
     }
-    
+
     @Test
-    void testSetStatus() {
-        Order order = new Order("ORDER123");
-        
-        Payment payment = paymentService.addPayment(order, "Voucher", voucherData);
-        paymentService.setStatus(payment, "REJECTED");
-        
+    void testAddPaymentWithInvalidVoucher() {
+        Map<String, String> invalidVoucherData = new HashMap<>();
+        invalidVoucherData.put("voucherCode", "INVALID12345678");
+
+        Payment payment = new Payment(null, "Voucher", invalidVoucherData);
+
+        assertNotNull(payment);
+        assertEquals("Voucher", payment.getMethod());
         assertEquals("REJECTED", payment.getStatus());
-        assertEquals("FAILED", order.getStatus());
     }
 
     @Test
-    void valid
-    
-    @Test
-    void testGetPayment() {
-        Order order = new Order("ORDER123");
-        
-        Payment payment = paymentService.addPayment(order, "Voucher", voucherData);
-        Payment fetchedPayment = paymentService.getPayment(payment.getId());
-        
-        assertNotNull(fetchedPayment);
-        assertEquals(payment.getId(), fetchedPayment.getId());
+    void testAddPaymentWithCashOnDelivery() {
+        Payment payment = new Payment(null, "CashOnDelivery", codData);
+
+        assertNotNull(payment);
+        assertEquals("CashOnDelivery", payment.getMethod());
+        assertEquals("PENDING", payment.getStatus());
     }
-    
+
     @Test
-    void testVoucherCodeValidation() {
-        Order order = new Order("ORDER123");
-        Map<String, String> invalidPaymentData = new HashMap<>();
-        invalidPaymentData.put("voucherCode", "INVALIDCODE12345");
-        
-        Payment payment = paymentService.addPayment(order, "Voucher", invalidPaymentData);
-        
+    void testAddPaymentWithInvalidCashOnDelivery() {
+        Map<String, String> invalidCodData = new HashMap<>();
+        invalidCodData.put("address", "");  // Invalid empty address
+        invalidCodData.put("deliveryFee", "5000");
+
+        Payment payment = new Payment(null, "CashOnDelivery", invalidCodData);
+
+        assertNotNull(payment);
+        assertEquals("CashOnDelivery", payment.getMethod());
         assertEquals("REJECTED", payment.getStatus());
     }
-    
-    @Test
-    void testCashOnDeliveryValidation() {
-        Order order = new Order("ORDER123");
-        Map<String, String> invalidPaymentData = new HashMap<>();
-        invalidPaymentData.put("address", "");
-        invalidPaymentData.put("deliveryFee", "5000");
-        
-        Payment payment = paymentService.addPayment(order, "CashOnDelivery", invalidPaymentData);
-        
-        assertEquals("REJECTED", payment.getStatus());
-    }
+
     @Test
     void testSetStatusToSuccess() {
-        Payment payment = new Payment("6", "Voucher Code", voucherData);
+        Payment payment = new Payment(null, "Voucher", voucherData);
         payment.setStatus("SUCCESS");
         assertEquals("SUCCESS", payment.getStatus());
     }
 
     @Test
     void testSetStatusToRejected() {
-        Payment payment = new Payment("7", "Voucher Code", voucherData);
+        Payment payment = new Payment(null, "Voucher", voucherData);
         payment.setStatus("REJECTED");
         assertEquals("REJECTED", payment.getStatus());
     }
