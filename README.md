@@ -134,3 +134,13 @@ public class ProductManager {
 
 - Without Open/Closed Principle
     * Disadvantage: Modifying existing code to add functionality
+
+
+## WEEK 4
+
+1. Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this TDD flow is useful enough for you or not. If not, explain things that you need to do next time you make more tests.
+
+    Its usfule in the ability of bug detectin. with TDD it help catches issues early with the consideration to cover both happt and edge cases. other then that is force us to consider the interface bfore we implemate it. 
+
+
+2. 
