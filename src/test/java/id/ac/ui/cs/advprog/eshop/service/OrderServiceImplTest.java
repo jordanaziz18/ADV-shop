@@ -1,6 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.service;
 
-import static org.junit.jupiter.api.Assertions.*
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -29,7 +29,7 @@ class OrderServiceImplTest {
    @Mock
    OrderRepository orderRepository;
 
-   List<Order> orderList;
+   List<Order> orders;
 
    @BeforeEach
    void setUp() {
