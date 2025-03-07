@@ -41,6 +41,9 @@ class PaymentTest {
         assertEquals("REJECTED", payment.getStatus());
         assertEquals("FAILED", order.getStatus());
     }
+
+    @Test
+    void valid
     
     @Test
     void testGetPayment() {
