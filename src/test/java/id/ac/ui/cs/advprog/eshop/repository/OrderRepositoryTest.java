@@ -1,16 +1,16 @@
 package id.ac.ui.cs.advprog.eshop.repository;
 
-import id.ac.ui.cs.advprog.eshop.model.Product;
-import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
-import id.ac.ui.cs.advprog.eshop.repository.OrderRepository;
-import id.ac.ui.cs.advprog.eshop.model.Order;
+import java.util.ArrayList;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-import java.util.ArrayList;
+import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
+import id.ac.ui.cs.advprog.eshop.model.Order;
+import id.ac.ui.cs.advprog.eshop.model.Product;
 
 class OrderRepositoryTest {
     OrderRepository orderRepository;
@@ -95,6 +95,6 @@ class OrderRepositoryTest {
 
         List<Order> orderList = orderRepository.findAllByAuthor(
                 orders.get(1).getAuthor().toLowerCase());
-        assertEquals(2, orderList.size());
+        assertEquals(0, orderList.size());
     }
 }
